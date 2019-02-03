@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import './layout.css'
+import '../styles/layout.scss'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <div
           style={{
             margin: `0 auto`,
@@ -29,9 +29,9 @@ const Layout = ({ children }) => (
         >
           {children}
           <footer>
-            © {new Date().getFullYear()}, by
+            © {new Date().getFullYear()}
             {` `}
-            <a href="https://www.greyfox.com">Grey Fox Studio</a>
+            <a href="http://greyfox.studio" target="_blank">Grey Fox Studio</a>
           </footer>
         </div>
       </>

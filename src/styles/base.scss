@@ -1,0 +1,27 @@
+h1 {
+  font-family: 'Playfair Display', serif;
+}
+
+html {
+  font-family: 'Raleway', serif;
+  color: 'black';
+}
+
+.title {
+  margin: auto;
+  height: 92vh;
+  display: flex;
+  flex-direction: 'column';
+  justify-content: 'center';
+
+  .title__wrapper {
+    margin: auto 0;
+
+    h1 {
+      font-size: 6rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
