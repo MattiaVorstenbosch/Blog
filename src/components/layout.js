@@ -28,11 +28,11 @@ const Layout = ({ children }) => (
           }}
         >
           {children}
-          <footer>
+          {/* <footer>
             © {new Date().getFullYear()}
             {` `}
             <a href="http://greyfox.studio" target="_blank">Grey Fox Studio</a>
-          </footer>
+          </footer> */}
         </div>
       </>
     )}
