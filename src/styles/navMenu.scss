@@ -33,8 +33,17 @@
         animation: appear-text 0.1s forwards;
         animation-delay: 0.7s;
       }
+      // .menuItemLinkOpening {
+      //   animation: appear-text 0.1s forwards;
+      //   animation-delay: 0.7s;
+      // }
+      .menuItemLinkClosing {
+        animation: appear-text 0.5s forwards;
+        animation-direction: reverse;
+        animation-delay: 0s;
+      }
     }
-    li::after {
+    .menuItemOpening::after {
       content: '';
       top: 0;
       right: 0;
@@ -46,6 +55,19 @@
       animation: rev-block 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
       animation-delay: 0.4s;
     }
+    .menuItemClosing::before {
+      content: '';
+      top: 0;
+      right: 0;
+      width: 0%;
+      height: 100%;
+      background-color: black;
+      z-index: 30;
+      position: absolute;
+      animation: rev-block 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      animation-direction: reverse;
+      animation-delay: 0s;
+    }
     li:hover {
       a {
         color: rgba(0,0,0,0.4);
@@ -54,7 +76,7 @@
   }
 }
 
-.menu::after {
+.menuOpening::after {
   content: '';
   top: 0;
   right: 0;
@@ -63,6 +85,18 @@
   background-color: white;
   position: fixed;
   animation: menuBg 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0s;
+}
+.menuClosing::before {
+  content: '';
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  animation: menuBg 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-direction: reverse;
   animation-delay: 0s;
 }
 

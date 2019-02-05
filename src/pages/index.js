@@ -2,10 +2,32 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
 import BlogPreview from '../components/BlogPreview'
+import delayUnmounting from '../components/delayUnmounting'
 import '../styles/styles.scss'
+
+
+const Menu = (props) => {
+  const { isMounted } = props;
+  return (
+    <div className={`menu ${isMounted ? 'menuOpening' : 'menuClosing'}`}>
+      <ul className="navMenu">
+        <li className={`menuItem ${isMounted ? 'menuItemOpening' : 'menuItemClosing'}`}>
+          <Link className={`menuItemLink ${isMounted ? 'menuItemLinkOpening' : 'menuItemLinkClosing'}`} to="/">Home</Link>
+        </li>
+        <li className={`menuItem ${isMounted ? 'menuItemOpening' : 'menuItemClosing'}`}>
+          <Link className={`menuItemLink ${isMounted ? 'menuItemLinkOpening' : 'menuItemLinkClosing'}`} to="/posts">Posts</Link>
+        </li>
+        <li className={`menuItem ${isMounted ? 'menuItemOpening' : 'menuItemClosing'}`}>
+          <Link className={`menuItemLink ${isMounted ? 'menuItemLinkOpening' : 'menuItemLinkClosing'}`} to="/contact">Contact</Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+const DelayedComponent = delayUnmounting(Menu);
 
 export default class IndexPage extends Component {
   constructor(props) {
@@ -26,20 +48,12 @@ export default class IndexPage extends Component {
     const { openMenu } = this.state;
     return (
       <React.Fragment>
-        <button class={`hamburger hamburger--collapse-r ${openMenu && 'is-active'}`} type="button" onClick={this.handleMenuToggle}>
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
+        <button className={`hamburger hamburger--collapse-r ${openMenu && 'is-active'}`} type="button" onClick={this.handleMenuToggle}>
+          <span className="hamburger-box">
+            <span className="hamburger-inner"></span>
           </span>
         </button>
-        {openMenu &&
-          <div className="menu">
-            <ul className="navMenu">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/posts">Posts</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </div>
-        }
+        <DelayedComponent delayTime={1000} isMounted={this.state.openMenu} />
         <Layout>
           <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
           <div className="title">
